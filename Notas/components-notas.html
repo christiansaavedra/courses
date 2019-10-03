@@ -4,7 +4,7 @@
 child.
 
 <!--Props-->
-Sistema para pasar data desde un parent a un child o nested component. Props es un objeto.
+Sistema para pasar data desde un parent a un child o nested component. Props es un objeto. Los vemos generalmente dentro del html tag, ej <h1 author="Roger">
 
 <CommentDetail author="Sam" /> Author seria la prop. CommentDetail el parent. 
 
@@ -57,3 +57,11 @@ window.navigator.geolocation.getCurrentPosition(
 <!--Passing state as props-->
 Pasar la propiedad del state, como props, a otro component.
 Ej, dentro de un component App, renderizo otro component <SeasonDisplay lat={this.state.lat}/>
+
+<!--Event Handler Props-->
+onClick, onChange, onSubmit.
+<input onChange={this.onChangeHandler}> OCH es una funcion definida en la class, que tiene como parametro event. En la props no va con () sino se autoinvocaria al cargar la pagina.
+Otra forma: 
+<input onChange={(event) => -loQueHagaLaFuncOCH-}> Y de esta forma ahorramos codigo pq nos evitamos definir arriba OCH
+Otra forma:
+<form onSubmit={e => this.onFormSubmit(e)}   Aca si va con ()
