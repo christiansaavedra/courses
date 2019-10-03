@@ -1,0 +1,59 @@
+<!--Addons-->> Usamos Semantic-UI para Interfaz, Faker para random pics.
+
+<!--Component Hierarchy-->> En nuestro ejemplo App es parent, CommentDetail el
+child.
+
+<!--Props-->
+Sistema para pasar data desde un parent a un child o nested component. Props es un objeto.
+
+<CommentDetail author="Sam" /> Author seria la prop. CommentDetail el parent. 
+
+Props va de parametro en el functional component:
+const CommentDetail = props => {
+    return ( <h1>{props.author}</h1> )
+
+<!--Function Components-->
+Function es para componentes simples. 
+
+<!--Class Components-->
+Class es para mas complejos (user inputs, events, lifecycle).
+Puede usar state: Objeto que contiene data relevante para el componente. Updating state causes the component to (almost) re-render. 
+Must be initialized when a comp is created.
+State can only be updated using the function setState.
+
+Class comp extend (subclass) React.Component. Tiene un constructor (lo primero que ejecuta, por eso ahi va el this.state). Must define a render method that returns JSX. 
+Otra forma, sin constructor ni super,
+constructor(props) {
+    super(props);
+
+    this.state = {
+      lat: null, // null x default xq no se su valor aun
+      errorMessage: ""
+    };
+  }
+
+<!--Navigator API-->
+
+window.navigator.geolocation.getCurrentPosition(
+    position => {
+      this.setState({
+        lat: position.coords.latitude
+      });
+    },
+    err => {
+      this.setState({
+        errorMessage: err.message
+      });
+      console.log(err);
+    }
+  );
+}
+
+<!--Lifecycle Methods-->
+- constructor
+- componentDidMount: se recomeinda centralizar todos los data loadings (API, etc) aca.
+- componentDidUpdate: si quiero que el comp se renderice cada vez que pasa algo.
+
+<!--Passing state as props-->
+Pasar la propiedad del state, como props, a otro component.
+Ej, dentro de un component App, renderizo otro component <SeasonDisplay lat={this.state.lat}/>
