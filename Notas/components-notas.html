@@ -62,7 +62,7 @@ Ej, dentro de un component App, renderizo otro component <SeasonDisplay lat={thi
 onClick, onChange, onSubmit.
 <input onChange={this.onChangeHandler}> OCH es una funcion definida en la class, que tiene como parametro event. En la props no va con () sino se autoinvocaria al cargar la pagina.
 Otra forma: 
-input onChange={(event) => -loQueHagaLaFuncOCH-}> Y de esta forma ahorramos codigo pq nos evitamos definir arriba OCH
+<input onChange={e => this.setState({[e.target.name] : e.target.value})}/> Y de esta forma ahorramos codigo pq nos evitamos definir arriba OCH
 Otra forma:
 form onSubmit={e = this.onFormSubmit(e)}>   Aca si va con ()
 
